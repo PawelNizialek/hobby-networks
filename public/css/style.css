@@ -86,6 +86,26 @@ input {
     color: #FB6D0F;
     text-decoration: none;
 }
+#checkbox{
+    width: 100%;
+    margin-top: 1em;
+    box-shadow: 0px 3px 6px #00000029;
+    text-align: center;
+    font: normal normal normal 1em Arial;
+    letter-spacing: 0px;
+    color: #FA8334;
+    text-shadow: 0px 3px 6px #00000029;
+    box-shadow: none;
+}
+#conditions{
+    width: 7%;
+    box-shadow: none;
+    height: 100%;
+}
+#register-button{
+    width: auto;
+}
+
 
 @media only screen and (max-device-width: 420px) {
     .container{
