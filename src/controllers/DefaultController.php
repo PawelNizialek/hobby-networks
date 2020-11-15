@@ -5,10 +5,10 @@
     class DefaultController extends AppController{
 
         public function index() {
-            die("index method");
+            $this->render('login');
         }
 
         public function mainpage() {
-            die("mainpage method");
+            $this->render('mainpage');
         }
     }
