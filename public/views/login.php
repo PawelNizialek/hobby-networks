@@ -9,10 +9,16 @@
             //LOGO
         </div>
         <div class="login-container">
-            <form>
+            <form method="post" action="login">
+                <div class="message">
+                    <?php if(isset($message)){
+                    echo $message;
+                    }
+                    ?>
+                </div>
             <input name="login" type="text" placeholder="username or email">
             <input name="password" type="password" placeholder="password">
-            <button>SIGN-IN</button>
+            <button type="submit">SIGN-IN</button>
         </form>
         </div>
         
@@ -20,6 +26,6 @@
             Create
         <a href="">New Account</a>
         </div>
-        
+
     </div>
 </body>
