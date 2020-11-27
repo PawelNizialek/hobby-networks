@@ -11,4 +11,12 @@
         public function mainpage() {
             $this->render('mainpage');
         }
+
+        public function messenger() {
+            $this->render('messenger');
+        }
+
+        public function test() {
+            $this->render('test');
+        }
     }

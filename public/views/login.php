@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+<!--    <link rel="stylesheet" type="text/css" href="public/css/style.css">-->
     <title>SIGN-IN</title>
 </head>
 <body>
     <div class="container">
         <div class="logo">
-            //LOGO
+
         </div>
         <div class="login-container">
             <form method="post" action="login">
