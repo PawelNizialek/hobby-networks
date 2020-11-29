@@ -19,4 +19,8 @@
         public function test() {
             $this->render('test');
         }
+
+        public function upgrade() {
+            $this->render('upgrade');
+        }
     }

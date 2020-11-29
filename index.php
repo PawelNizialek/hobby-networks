@@ -11,6 +11,7 @@ Routing::get('index', 'DefaultController');
 Routing::get('mainpage', 'DefaultController');
 Routing::get('test', 'DefaultController');
 Routing::get('messenger', 'DefaultController');
+Routing::get('upgrade', 'DefaultController');
 Routing::post('login', 'SecurityController');
 
 
