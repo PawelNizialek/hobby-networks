@@ -12,6 +12,9 @@ Routing::get('mainpage', 'DefaultController');
 Routing::get('test', 'DefaultController');
 Routing::get('messenger', 'DefaultController');
 Routing::get('upgrade', 'DefaultController');
+Routing::get('groups', 'DefaultController');
+Routing::get('saved', 'DefaultController');
+Routing::get('settings', 'DefaultController');
 Routing::post('login', 'SecurityController');
 
 

@@ -23,4 +23,16 @@
         public function upgrade() {
             $this->render('upgrade');
         }
+
+        public function groups() {
+            $this->render('groups');
+        }
+
+        public function saved() {
+            $this->render('saved');
+        }
+
+        public function settings() {
+            $this->render('settings');
+        }
     }
