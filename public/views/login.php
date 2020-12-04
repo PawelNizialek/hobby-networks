@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<!--    <link rel="stylesheet" type="text/css" href="public/css/style.css">-->
+    <link rel="stylesheet" type="text/css" href="public/css/style.css">
     <title>SIGN-IN</title>
 </head>
 <body>
@@ -21,7 +21,7 @@
             <button type="submit">SIGN-IN</button>
         </form>
         </div>
-        
+
         <div class="new-account-container">
             Create
         <a href="">New Account</a>

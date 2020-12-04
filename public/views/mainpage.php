@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-<!--    <link rel="stylesheet" type="text/css" href="public/css/mainpage-style.css">-->
+    <link rel="stylesheet" type="text/css" href="public/css/mainpage-style.css">
       <script src="https://kit.fontawesome.com/c648cced1d.js" crossorigin="anonymous"></script>
     <title>MAIN PAGE</title>
 </head>
@@ -15,7 +15,7 @@
                     <i class="fas fa-toggle-off"></i>
                 </div>
             </div>
-            
+
             <div class="searchbar">
                 <form>
                     <input placeholder="add something interesting ">
@@ -32,7 +32,7 @@
                     <i class="fas fa-user"></i>
                 </div>
             </div>
-            
+
         </header>
         <main>
             <nav>
