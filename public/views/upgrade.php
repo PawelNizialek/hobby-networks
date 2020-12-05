@@ -26,29 +26,29 @@
     <div class="up-items">
         <ul>
             <li>
-                <a href=""><i class="fas fa-columns"></i></a>
+                <a href="mainpage"><i class="fas fa-columns"></i></a>
             </li>
             <li>
-                <a href=""><i class="far fa-save"></i></a>
+                <a href="saved"><i class="far fa-save"></i></a>
             </li>
         </ul>
     </div>
     <div class="down-items">
         <ul>
             <li>
-                <a href=""><i class="fas fa-shopping-cart"></i></a>
+                <a href="upgrade"><i class="fas fa-shopping-cart"></i></a>
             </li>
             <li>
                 <a href=""><i class="fas fa-search"></i></a>
             </li>
             <li>
-                <a href=""><i class="fas fa-user-friends"></i></a>
+                <a href="groups"><i class="fas fa-user-friends"></i></a>
             </li>
             <li>
-                <a href=""><i class="fab fa-facebook-messenger"></i></a>
+                <a href="messenger"><i class="fab fa-facebook-messenger"></i></a>
             </li>
             <li>
-                <a href=""><i class="fas fa-cog"></i></a>
+                <a href="settings"><i class="fas fa-cog"></i></a>
             </li>
         </ul>
     </div>
