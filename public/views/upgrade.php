@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <!--    <link rel="stylesheet" type="text/css" href="public/css/mainpage-style.css">-->
+    <link rel="stylesheet" type="text/css" href="public/css/navigation.css">
     <script src="https://kit.fontawesome.com/c648cced1d.js" crossorigin="anonymous"></script>
     <title>MAIN PAGE</title>
 </head>
@@ -13,7 +13,7 @@
         </ul>
     </div>
     <div class="add-bar">
-        <button id="register-button"><i class="fas fa-plus-square"></i> add something interesting...</button>
+        <button id="add-button"><i class="fas fa-plus-square"></i> add something interesting...</button>
     </div>
     <div class="right-items">
         <ul>
