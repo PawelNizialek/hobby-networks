@@ -4,18 +4,24 @@ require_once 'AppController.php';
 
 class HobbyController extends AppController {
 
+    const MAX_FILE_SIZE = 1024*1024;
+    const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
+    const UPLOAD_DIRECTORY = '/../public/upload/';
+
+
     public function addHobby(){
-        if ($this->isPost() && is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
+//        echo $_FILES['file']['tmp_name'];
+        if (is_uploaded_file($_FILES['file']['tmp_name'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
-            
-            $project = new Project($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+//
+//            $project = new Project($_POST['title'], $_POST['description'], $_FILES['file']['name']);
 
             return $this->render('mainpage', ['messages' => $this->message]);
         }
-        return $this->render('mainpage', ['messages' => $this->message]);
+        return $this->render('add', ['messages' => $this->message]);
     }
 
     private function validate(array $file): bool
