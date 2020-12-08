@@ -13,7 +13,7 @@
             </ul>
         </div>
         <div class="add-bar">
-            <button id="add-button"><i class="fas fa-plus-square"></i> add something interesting...</button>
+            <a href="add"><button id="add-button"><i class="fas fa-plus-square"></i> add something interesting...</button></a>
         </div>
         <div class="right-items">
             <ul>
