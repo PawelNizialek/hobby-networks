@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/navigation.css">
-<!--    <link rel="stylesheet" type="text/css" href="public/css/mainpage-style.css">-->
+    <link rel="stylesheet" type="text/css" href="public/css/mainpage-style.css">
       <script src="https://kit.fontawesome.com/c648cced1d.js" crossorigin="anonymous"></script>
     <title>MAIN PAGE</title>
 </head>
@@ -56,7 +56,7 @@
             </div>
         </section>
         <main>
-            <section class="hobbies">
+            <div class="hobbies">
                 <div id="hobby-1">
                     <div id="title">
                         <div id="person-image">
@@ -97,7 +97,7 @@
 
                 </div>
                 <div>hobby-2</div>
-            </section>
+            </div>
         </main>
     </div>
 </body>
