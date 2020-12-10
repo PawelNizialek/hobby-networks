@@ -1,6 +1,7 @@
 <?php
 
 require_once 'AppController.php';
+require_once __DIR__ .'/../model/Hobby.php';
 
 class HobbyController extends AppController {
 
@@ -11,15 +12,15 @@ class HobbyController extends AppController {
 
     public function addHobby(){
 //        echo $_FILES['file']['tmp_name'];
-        if (is_uploaded_file($_FILES['file']['tmp_name'])) {
+        if (is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
-//
-//            $project = new Project($_POST['title'], $_POST['description'], $_FILES['file']['name']);
 
-            return $this->render('mainpage', ['messages' => $this->message]);
+            $hobby = new Hobby($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+
+            return $this->render('mainpage', ['messages' => $this->message, 'hobby'=>$hobby]);
         }
         return $this->render('add', ['messages' => $this->message]);
     }

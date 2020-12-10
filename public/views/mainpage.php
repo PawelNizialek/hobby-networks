@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/navigation.css">
+<!--    <link rel="stylesheet" type="text/css" href="public/css/mainpage-style.css">-->
       <script src="https://kit.fontawesome.com/c648cced1d.js" crossorigin="anonymous"></script>
     <title>MAIN PAGE</title>
 </head>
@@ -55,7 +56,48 @@
             </div>
         </section>
         <main>
-            Test
+            <section class="hobbies">
+                <div id="hobby-1">
+                    <div id="title">
+                        <div id="person-image">
+
+                        </div>
+                        <div id="person">
+                            Daniel
+                        </div>
+                        <div id="send-time">
+                            2 hours ago
+                        </div>
+                    </div>
+                    <div id="hobby-image">
+                        <img src="public/upload/<?=$hobby->getImage()?>">
+                    </div>
+                    <div id="description">
+                        <div id="name">
+                            <?= $hobby->getTitle() ?>
+                        </div>
+                        <div id="descritpion">
+                            <?= $hobby->getDescription() ?>
+                        </div>
+                        <div id="stats">
+                            <div id="stars">
+                                301
+                            </div>
+                            <div id="comments">
+                                45
+                            </div>
+                            <div id="time">
+                                1:03:05
+                            </div>
+                            <dive id="save-button">
+                                SAVE
+                            </dive>
+                        </div>
+                    </div>
+
+                </div>
+                <div>hobby-2</div>
+            </section>
         </main>
     </div>
 </body>
