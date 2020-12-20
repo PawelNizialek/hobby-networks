@@ -5,6 +5,10 @@
     class DefaultController extends AppController{
 
         public function index() {
+            if (!isset($_SESSION["user"])){
+                $url = "http://$_SERVER[HTTP_HOST]";
+                header("Location: {$url}/mainpage");
+            }
             $this->render('login');
         }
 
