@@ -10,7 +10,6 @@ class SecurityController extends AppController
     public function login(){
         $userRepository = new UserRepository();
 
-
         if($this->isPost()){
             return $this->login('login');
         }
@@ -33,6 +32,8 @@ class SecurityController extends AppController
         if($user->getPassword() !== $password){
             return $this->render('login', ["message"=>"Wrong password"]);
         }
+        setcookie("user", "admin", time() + 86400);
+        $_SESSION["user"] = "admin";
 
         $url = "http://$_SERVER[HTTP_HOST]";
         header("Location: {$url}/mainpage");
