@@ -24,4 +24,16 @@ class UserRepository extends Repository{
             $user['name']
         );
     }
+    public function setUser(string $name, string $email, string $password){
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO users (email, password)
+            VALUES ()
+        ');
+
+        //TODO you should get this value from logged user session
+        $assignedById = 10;
+
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    }
 }

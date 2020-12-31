@@ -1,3 +1,6 @@
+<?php
+    session_start();
+?>
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/navigation.css">
@@ -18,7 +21,11 @@
         </div>
         <div class="right-items">
             <ul>
-                <li><a href="#"><i class="far fa-bell"></i></a> </li>
+                <li><a href="logout">Log out</a> </li>
+                <?php
+                    echo $_SESSION['name'];
+                ?>
+<!--                <li></li>-->
                 <li><a href="#"><i class="fas fa-user"></i></a></li>
             </ul>
         </div>

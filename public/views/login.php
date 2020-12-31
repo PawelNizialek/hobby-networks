@@ -24,7 +24,7 @@
 
         <div class="new-account-container">
             Create
-        <a href="">New Account</a>
+        <a href="register">New Account</a>
         </div>
 
     </div>

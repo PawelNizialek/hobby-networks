@@ -8,7 +8,7 @@ require_once 'src/controllers/HobbyController.php';
 $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
-Routing::get('index', 'DefaultController');
+Routing::get('', 'DefaultController');
 Routing::get('mainpage', 'DefaultController');
 Routing::get('test', 'DefaultController');
 Routing::get('messenger', 'DefaultController');
@@ -17,7 +17,10 @@ Routing::get('groups', 'DefaultController');
 Routing::get('saved', 'DefaultController');
 Routing::get('settings', 'DefaultController');
 Routing::post('login', 'SecurityController');
+Routing::post('logout', 'SecurityController');
 Routing::post('addHobby', 'HobbyController');
+Routing::post('register', 'SecurityController');
+Routing::post('addUser', 'SecurityController');
 Routing::get('add', 'DefaultController');
 
 

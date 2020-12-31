@@ -5,7 +5,7 @@
     class DefaultController extends AppController{
 
         public function index() {
-            if (!isset($_SESSION["user"])){
+            if (isset($_SESSION["user"])){
                 $url = "http://$_SERVER[HTTP_HOST]";
                 header("Location: {$url}/mainpage");
             }
@@ -13,7 +13,12 @@
         }
 
         public function mainpage() {
-            $this->render('mainpage');
+            if(isset($_SESSION['name'])) {
+                $this->render('mainpage');
+            }
+            else{
+                $this->render("login");
+            }
         }
 
         public function messenger() {
