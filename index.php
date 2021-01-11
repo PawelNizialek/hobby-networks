@@ -9,7 +9,7 @@ $path = trim($_SERVER['REQUEST_URI'], '/');
 $path = parse_url($path, PHP_URL_PATH);
 
 Routing::get('', 'DefaultController');
-Routing::get('mainpage', 'DefaultController');
+Routing::get('mainpage', 'HobbyController');
 Routing::get('test', 'DefaultController');
 Routing::get('messenger', 'DefaultController');
 Routing::get('upgrade', 'DefaultController');

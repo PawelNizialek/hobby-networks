@@ -34,10 +34,6 @@ class SecurityController extends AppController
             return $this->render('login', ["message"=>"Wrong password"]);
         }
 
-//        $cookie_name = "user";
-//        $cookie_value = "John Doe";
-//        setcookie($cookie_name, $cookie_value, time() + (86400 * 30), "/"); // 86400 = 1 day
-
         $_SESSION['name'] = $login;
 
         $url = "http://$_SERVER[HTTP_HOST]";
@@ -55,7 +51,6 @@ class SecurityController extends AppController
         $this->render('login');
     }
     public function logout(){
-//        setcookie("user", "John Doe", time() - (86400 * 30), "/"); // 86400 = 1 day
         session_destroy();
         unset($_SESSION['name']);
         return $this->render('login');

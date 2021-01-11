@@ -12,15 +12,6 @@
             $this->render('login');
         }
 
-        public function mainpage() {
-            if(isset($_SESSION['name'])) {
-                $this->render('mainpage');
-            }
-            else{
-                $this->render("login");
-            }
-        }
-
         public function messenger() {
             $this->render('messenger');
         }
