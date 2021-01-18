@@ -24,7 +24,7 @@
         </div>
     </header>
     <div class="main-container">
-        <section>
+        <nav>
             <div class="up-items">
                 <ul>
                     <li>
@@ -54,9 +54,10 @@
                     </li>
                 </ul>
             </div>
-        </section>
+        </nav>
         <main>
             <div class="hobbies">
+                <?php foreach ($hobbies as $hobby): ?>
                 <div id="hobby-1">
                     <div id="title">
                         <div id="person-image">
@@ -94,9 +95,8 @@
                             </dive>
                         </div>
                     </div>
-
                 </div>
-                <div>hobby-2</div>
+                <?php endforeach; ?>
             </div>
         </main>
     </div>

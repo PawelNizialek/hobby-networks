@@ -2,12 +2,25 @@
 
 require_once 'AppController.php';
 require_once __DIR__ .'/../model/Hobby.php';
+require_once __DIR__.'/../repository/HobbyRepository.php';
 
 class HobbyController extends AppController {
 
-    const MAX_FILE_SIZE = 1024*1024;
+    const MAX_FILE_SIZE = 800*800;
     const SUPPORTED_TYPES = ['image/png', 'image/jpeg'];
     const UPLOAD_DIRECTORY = '/../public/upload/';
+
+    private $hobbyRepository;
+
+    public function __construct()
+    {
+            $this->hobbyRepository = new HobbyRepository();
+    }
+
+    public function hobbies() {
+        $hobbies = $this->hobbyRepository->getHobbies();
+        $this->render('mainpage',['hobbies' => $hobbies]);
+    }
 
 
     public function addHobby(){
@@ -19,6 +32,8 @@ class HobbyController extends AppController {
             );
 
             $hobby = new Hobby($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            $this->hobbyRepository->addHobby($hobby);
+
 
             return $this->render('mainpage', ['messages' => $this->message, 'hobby'=>$hobby]);
         }

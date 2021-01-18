@@ -1,4 +1,78 @@
-#hobby-image img{
-    width: 30px;
-    height: 30px;
+.hobbies {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 5em;
+    padding: 2em;
+    overflow: auto;
+}
+.hobbies img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+/*.hobbies>div>div {*/
+/*    height: 100%;*/
+/*    !*margin: 1em;*!*/
+/*    color: #2699FB;*/
+/*    display: flex;*/
+/*    flex-direction: column;*/
+/*    justify-content: space-around;*/
+/*}*/
+
+.hobbies>div {
+    border: 1px solid gray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 25vw;
+}
+
+.hobbies #title {
+    margin: 0;
+    height: 3em;
+    background: #E9E9E9 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 0.79;
+}
+
+.hobbies #title #person {
+    text-align: left;
+    font: normal normal bold 16px/30px Arial;
+    letter-spacing: 0px;
+    color: #545454;
+}
+
+.hobbies #title #send-time {
+    text-align: left;
+    font: normal normal normal 10px/30px Arial;
+    letter-spacing: 0px;
+    color: #545454;
+}
+
+.hobbies #description {
+    background: #F6F6F6 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    opacity: 1;
+    height: 20%;
+}
+
+.hobbies #name {
+    text-align: left;
+    font: normal normal bold 20px/30px Arial;
+    letter-spacing: 0px;
+    color: #505050;
+}
+
+.hobbies #description {
+    text-align: left;
+    font: normal normal normal 14px/24px Arial;
+    letter-spacing: 0px;
+    color: #313131;
+}
+
+.hobbies #stats {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
 }
