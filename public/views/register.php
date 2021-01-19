@@ -9,16 +9,23 @@
             //LOGO
         </div>
         <div class="login-container">
-            <form>
-                <input name="e-mail" type="text" placeholder="e-mail">
-                <input name="name" type="text" placeholder="your name">
+            <form class="register" action="register" method="POST">
+                <div class="messages">
+                    <?php
+                    if(isset($messages)){
+                        foreach($messages as $message) {
+                            echo $message;
+                        }
+                    }
+                    ?>
+                </div>
+                <input name="email" type="text" placeholder="email@email.com">
                 <input name="password" type="password" placeholder="password">
-                <input name="password" type="password" placeholder="re-enter password">
-                <div id="checkbox">
-                    <input type="checkbox" id="conditions" name="conditions">
-                    <label for="conditions">I accept conditions of use</label>
-                </div> 
-                <button id="register-button">Create New Account!</button>
+                <input name="confirmedPassword" type="password" placeholder="confirm password">
+                <input name="name" type="text" placeholder="name">
+                <input name="surname" type="text" placeholder="surname">
+                <input name="phone" type="text" placeholder="phone">
+                <button type="submit">REGISTER</button>
             </form>
         </div>
     </div>

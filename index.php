@@ -17,6 +17,7 @@ Routing::get('groups', 'DefaultController');
 Routing::get('saved', 'DefaultController');
 Routing::get('settings', 'DefaultController');
 Routing::post('login', 'SecurityController');
+Routing::post('register', 'SecurityController');
 Routing::post('addHobby', 'HobbyController');
 Routing::get('add', 'DefaultController');
 

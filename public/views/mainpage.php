@@ -1,3 +1,4 @@
+<?php //session_start(); ?>
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/navigation.css">
@@ -19,6 +20,7 @@
         <div class="right-items">
             <ul>
                 <li><a href="#"><i class="far fa-bell"></i></a> </li>
+                <?php echo $_SESSION['user'];?>
                 <li><a href="#"><i class="fas fa-user"></i></a></li>
             </ul>
         </div>
@@ -64,7 +66,7 @@
 
                         </div>
                         <div id="person">
-                            Daniel
+
                         </div>
                         <div id="send-time">
                             2 hours ago
