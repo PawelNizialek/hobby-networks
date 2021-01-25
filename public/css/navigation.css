@@ -17,6 +17,10 @@ a {
     color: #FB6400;
 }
 
+.logo{
+    font-size: 0.5em;
+}
+
 header {
     font-family: "Montserrat", sans-serif;
     font-size: 1.5em;
@@ -49,15 +53,17 @@ header .left-items li, .right-items li {
 }
 
 header button {
+    padding: 0.7em;
     cursor: pointer;
-    font: normal normal normal 1em Arial;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8em;
     letter-spacing: 0px;
     color: #505050;
     opacity: 0.8;
 }
 
 nav {
-    width: 5vw;
+    width: 4vw;
     height: 93vh;
     background: #F3F3F3 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
@@ -97,4 +103,7 @@ nav .down-items li{
 main {
     margin: 1em;
     display: flex;
+}
+.fa-user-friends, .fa-facebook-messenger, .fa-cog{
+    color:gainsboro;
 }

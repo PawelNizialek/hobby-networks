@@ -14,12 +14,21 @@ Routing::get('test', 'DefaultController');
 Routing::get('messenger', 'DefaultController');
 Routing::get('upgrade', 'DefaultController');
 Routing::get('groups', 'DefaultController');
-Routing::get('saved', 'DefaultController');
+Routing::get('saved', 'HobbyController');
 Routing::get('settings', 'DefaultController');
 Routing::post('login', 'SecurityController');
 Routing::post('register', 'SecurityController');
 Routing::post('addHobby', 'HobbyController');
 Routing::get('add', 'DefaultController');
+Routing::get('logout', 'SecurityController');
+Routing::get('', 'HobbyController');
+Routing::get('setStar', 'StarController');
+Routing::get('save', 'HobbyController');
+Routing::get('remove', 'HobbyController');
+Routing::get('description', 'HobbyController');
+Routing::get('setRole', 'SecurityController');
+Routing::get('search', 'HobbyController');
+Routing::get('searchHobbies', 'HobbyController');
 
 
 Routing::run($path);

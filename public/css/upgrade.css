@@ -1,0 +1,31 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;800&display=swap');
+
+main{
+    width: 96vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    background: #F6F6F6 0% 0% no-repeat padding-box;
+    margin: 0;
+}
+.message{
+    font-family: "Montserrat", sans-serif;
+    font-size: 2em;
+    color: #FB6400;
+}
+main button{
+    margin-top:2vh;
+    font-family: "Montserrat", sans-serif;
+    font-size: 1.2em;
+}
+.premium{
+    font-family: "Montserrat", sans-serif;
+    color: #FB6400;
+}
+.features{
+    margin:2vh;
+    font-family: "Montserrat", sans-serif;
+    line-height: 1.4em;
+}
+

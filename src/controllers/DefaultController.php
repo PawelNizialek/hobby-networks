@@ -12,8 +12,8 @@
             $this->render('login');
         }
 
-        public function mainpage() {
-            $this->render('mainpage');
+        public function hobbies() {
+            $this->render('hobbies');
         }
 
         public function messenger() {

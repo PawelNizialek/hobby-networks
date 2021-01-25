@@ -31,4 +31,8 @@ class AppController {
 
         print $output;
     }
+
+    protected function isLogged(): bool{
+        return isset($_SESSION["user"]);
+    }
 }

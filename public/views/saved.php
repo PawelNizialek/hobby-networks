@@ -1,56 +1,87 @@
 <!DOCTYPE html>
 <head>
     <link rel="stylesheet" type="text/css" href="public/css/navigation.css">
+    <link rel="stylesheet" type="text/css" href="public/css/mainpage-style.css">
     <script src="https://kit.fontawesome.com/c648cced1d.js" crossorigin="anonymous"></script>
+<!--    <script type="text/javascript" src="./public/js/statistics.js" defer></script>-->
+    <script type="text/javascript" src="./public/js/saving.js" defer></script>
     <title>MAIN PAGE</title>
 </head>
 <body>
-<header>
-    <div class="left-items">
-        <ul>
-            <li><a href="#">B</a> </li>
-            <li><a href="#"><i class="fas fa-toggle-off"></i></a></li>
-        </ul>
-    </div>
-    <div class="add-bar">
-        <button id="add-button"><i class="fas fa-plus-square"></i> add something interesting...</button>
-    </div>
-    <div class="right-items">
-        <ul>
-            <li><a href="#"><i class="far fa-bell"></i></a> </li>
-            <li><a href="#"><i class="fas fa-user"></i></a></li>
-        </ul>
-    </div>
-</header>
-<section>
-    <div class="up-items">
-        <ul>
-            <li>
-                <a href="mainpage"><i class="fas fa-columns"></i></a>
-            </li>
-            <li>
-                <a href="saved"><i class="far fa-save"></i></a>
-            </li>
-        </ul>
-    </div>
-    <div class="down-items">
-        <ul>
-            <li>
-                <a href="upgrade"><i class="fas fa-shopping-cart"></i></a>
-            </li>
-            <li>
-                <a href=""><i class="fas fa-search"></i></a>
-            </li>
-            <li>
-                <a href="groups"><i class="fas fa-user-friends"></i></a>
-            </li>
-            <li>
-                <a href="messenger"><i class="fab fa-facebook-messenger"></i></a>
-            </li>
-            <li>
-                <a href="settings"><i class="fas fa-cog"></i></a>
-            </li>
-        </ul>
-    </div>
-</section>
+<?php include('navigation.php')?>
+<div class="main-container">
+    <nav>
+        <div class="up-items">
+            <ul>
+                <li>
+                    <a href="hobbies"><i class="fas fa-columns"></i></a>
+                </li>
+                <li>
+                    <a href="saved"><i class="fas fa-archive"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="down-items">
+            <ul>
+                <li>
+                    <a href="upgrade"><i class="fas fa-shopping-cart"></i></a>
+                </li>
+                <li>
+                    <a href="search"><i class="fas fa-search"></i></a>
+                </li>
+                <li>
+                    <i class="fas fa-user-friends"></i>
+                </li>
+                <li>
+                    <i class="fab fa-facebook-messenger"></i>
+                </li>
+                <li>
+                    <a href="settings"><i class="fas fa-cog"></i></a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <main>
+        <div class="hobbies">
+            <?php foreach ($hobbies as $hobby): ?>
+                <div id="<?= $hobby->getId() ?>">
+                    <div id="title">
+                        <div id="person-image">
+
+                        </div>
+                        <div id="person">
+                            <?= $hobby->getUser() ?>
+                        </div>
+                        <div id="send-time">
+                            2 hours ago
+                        </div>
+
+                    </div>
+                    <div id="hobby-image">
+                        <img src="public/upload/<?=$hobby->getImage()?>">
+                    </div>
+                    <div id="description">
+                        <div id="name">
+                            <?= $hobby->getTitle() ?>
+                        </div>
+                        <div id="hobby-description">
+                            <?= $hobby->getDescription() ?>
+                        </div>
+                        <div id="stats">
+                            <div id="stars">
+                                <i class="far fa-star"><?= $hobby->getStars(); ?></i>
+                            </div>
+                            <div id="time">
+                            </div>
+                            <div id="save-button">
+                                <i class="fas fa-trash-alt"></i>
+                                <!--                                <button>SAVE</button>-->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            <?php endforeach; ?>
+        </div>
+    </main>
+</div>
 </body>

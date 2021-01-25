@@ -1,0 +1,28 @@
+main{
+    width: 96vw;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+}
+.search-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20vw;
+    height: 6vh;
+}
+/*input{*/
+/*    width: 20vw;*/
+/*}*/
+.search-button button{
+    /*height: 2vh;*/
+    padding: 0;
+    margin: 0;
+    width: 2vw;
+    height: 100%
+}
+.fa-search{
+}
+.search-bar input{
+    height: 100%;
+}

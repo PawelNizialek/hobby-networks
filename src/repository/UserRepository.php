@@ -4,10 +4,39 @@ require_once 'Repository.php';
 require_once __DIR__.'/../model/User.php';
 
 class UserRepository extends Repository{
+    public function getLoggedUserId($user){
+        $stmt = $this->database->connect()->prepare('
+            SELECT * FROM public.users WHERE email = :email AND password = :password
+        ');
+        $email = $user->getEmail();
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        $password = $user->getPassword();
+        $stmt->bindParam(':password', $password, PDO::PARAM_STR);
+        $stmt->execute();
+
+        $data = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $data['id'];
+    }
+    public function setRole(){
+        $loggedUser = $_SESSION["user-id"];
+        $newRole = "premium";
+        $_SESSION['user-role'] = $newRole;
+//        SELECT *  FROM public.users u JOIN users_details ud on  u.id_user_details=ud.id and u.user_id=:loggedUser
+        $stmt = $this->database->connect()->prepare('
+            UPDATE users_details SET role = :newRole from public.users u 
+            JOIN users_details ud on u.id_user_details=ud.id where u.user_id=:loggedUser
+        ');
+        $stmt->bindParam(':loggedUser', $loggedUser, PDO::PARAM_INT);
+        $stmt->bindParam(':newRole', $newRole, PDO::PARAM_STR);
+        $stmt->execute();
+    }
     public function getUser(string $email): ?User
     {
+//        $stmt = $this->database->connect()->prepare('
+//            SELECT * FROM public.users WHERE name = :name
+//        ');
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.users WHERE name = :name
+            SELECT * FROM users u JOIN users_details ud on u.id_user_details=ud.id WHERE name = :name;
         ');
         $stmt->bindParam(':name', $email, PDO::PARAM_STR);
         $stmt->execute();
@@ -21,41 +50,61 @@ class UserRepository extends Repository{
         return new User(
             $user['email'],
             $user['password'],
-            $user['name']
+            $user['name'],
+            'null',
+            'null',
+            $user['user_id'],
+            $user['role']
         );
     }
     public function addUser(User $user){
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO users_details (name, surname, phone)
-            VALUES (?, ?, ?)
+            SELECT * FROM users u JOIN users_details ud on u.id_user_details=ud.id WHERE name = :name;
         ');
+        $name = $user->getName();
+        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->execute();
+        if ($stmt == true) {
+            return null;
+        }
 
+        $stmt = $this->database->connect()->prepare('
+            INSERT INTO users_details (role, points, created_at, firstname, lastname)
+            VALUES (?, ?, ?, ?, ?)
+        ');
+        $date = new DateTime();
         $stmt->execute([
-            $user->getName(),
-            $user->getSurname(),
-            $user->getPhone()
+            "user",
+            0,
+            $date->format('Y-m-d'),
+            $user->getFirstname(),
+            $user->getLastname()
         ]);
 
         $stmt = $this->database->connect()->prepare('
-            INSERT INTO users (name, email, password, id_user_details)
-            VALUES (?, ?, ?)
+            INSERT INTO users (name, email, password, id_user_details, enabled)
+            VALUES (?, ?, ?, ?, ?)
         ');
 
         $stmt->execute([
-            $user->getName(),
+            $name,
             $user->getEmail(),
             $user->getPassword(),
-            $this->getUserDetailsId($user)
+            $this->getUserDetailsId($user),
+            true
         ]);
     }
     public function getUserDetailsId(User $user): int
     {
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM public.users_details WHERE name = :name AND surname = :surname AND phone = :phone
+            SELECT * FROM public.users_details WHERE firstname = :firstname AND lastname = :lastname
         ');
-//        $stmt->bindParam(':name', $user->getName(), PDO::PARAM_STR);
-//        $stmt->bindParam(':surname', $user->getSurname(), PDO::PARAM_STR);
-//        $stmt->bindParam(':phone', $user->getPhone(), PDO::PARAM_STR);
+//        $name = $user->getName();
+//        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $firstname = $user->getFirstname();
+        $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
+        $lastname = $user->getLastname();
+        $stmt->bindParam(':lastname', $lastname, PDO::PARAM_STR);
         $stmt->execute();
 
         $data = $stmt->fetch(PDO::FETCH_ASSOC);

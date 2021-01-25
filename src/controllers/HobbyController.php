@@ -18,26 +18,38 @@ class HobbyController extends AppController {
     }
 
     public function hobbies() {
-        $hobbies = $this->hobbyRepository->getHobbies();
-        $this->render('mainpage',['hobbies' => $hobbies]);
+        if(!$this->isLogged()){
+            return $this->render('login');
+        }
+        $hobbies = $this->hobbyRepository->getThreeHobbies();
+        $this->render('hobbies',['hobbies' => $hobbies]);
     }
 
 
     public function addHobby(){
-//        echo $_FILES['file']['tmp_name'];
         if (is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
                 dirname(__DIR__).self::UPLOAD_DIRECTORY.$_FILES['file']['name']
             );
 
-            $hobby = new Hobby($_POST['title'], $_POST['description'], $_FILES['file']['name']);
+            $hobby = new Hobby(0, $_POST['title'], $_POST['description'], $_FILES['file']['name']);
             $this->hobbyRepository->addHobby($hobby);
 
-
-            return $this->render('mainpage', ['messages' => $this->message, 'hobby'=>$hobby]);
+            $url = "http://$_SERVER[HTTP_HOST]";
+            header("Location: {$url}/hobbies");
         }
         return $this->render('add', ['messages' => $this->message]);
+    }
+
+    public function description($id){
+        $url = "http://$_SERVER[HTTP_HOST]";
+        header("Location: {$url}/description");
+    }
+
+    public function setStar(int $id){
+        $this->hobbyRepository->setStar($id);
+        http_response_code(200);
     }
 
     private function validate(array $file): bool
@@ -53,5 +65,35 @@ class HobbyController extends AppController {
         }
         return true;
     }
+    public function save(int $id){
+        $this->hobbyRepository->save($id);
+        http_response_code(200);
+    }
+    public function remove(int $id){
+        $this->hobbyRepository->remove($id);
+        http_response_code(200);
+    }
+    public function saved(){
+        if(!$this->isLogged()){
+            return $this->render('login');
+        }
+        $hobbies = $this->hobbyRepository->getSavedHobbies();
+        $this->render('saved',['hobbies' => $hobbies]);
+    }
+    public function search(){
+        $hobbies = $this->hobbyRepository->getSavedHobbies();
+        $this->render('search',['hobbies' => $hobbies]);
+    }
+    public function searchHobbies(){
+        $contentType = isset($_SERVER["CONTENT_TYPE"]) ? trim($_SERVER["CONTENT_TYPE"]) : '';
 
+        if($contentType === "application/json") {
+            $content = trim(file_get_contents("php://input"));
+            $decoded = json_decode($content, true);
+            header('Content-type: application/json');
+            http_response_code(200);
+
+            echo json_encode($this->hobbyRepository->getHobbyByTitle($decoded['search']));
+        }
+    }
 }

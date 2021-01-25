@@ -6,66 +6,70 @@ class Hobby
     private $title;
     private $description;
     private $image;
+    private $stars;
+    private $id;
+    private $user;
+    private $date;
 
-    /**
-     * Hobby constructor.
-     * @param $title
-     * @param $description
-     * @param $image
-     */
-    public function __construct($title, $description, $image)
+    public function __construct($id = null, $title, $description, $image, $stars = 0,  $user = null, $date = null)
     {
+        $this->id = $id;
         $this->title = $title;
         $this->description = $description;
         $this->image = $image;
+        $this->stars = $stars;
+        $this->user = $user;
+        $this->date = $date;
     }
 
-    /**
-     * @return mixed
-     */
+    public function getStars()
+    {
+        return $this->stars;
+    }
+
+    public function getDate()
+    {
+        return $this->date;
+    }
+
     public function getTitle()
     {
         return $this->title;
     }
 
-    /**
-     * @param mixed $title
-     */
     public function setTitle($title)
     {
         $this->title = $title;
     }
 
-    /**
-     * @return mixed
-     */
     public function getDescription()
     {
         return $this->description;
     }
 
-    /**
-     * @param mixed $description
-     */
     public function setDescription($description)
     {
         $this->description = $description;
     }
 
-    /**
-     * @return mixed
-     */
     public function getImage()
     {
         return $this->image;
     }
 
-    /**
-     * @param mixed $image
-     */
     public function setImage($image)
     {
         $this->image = $image;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    public function getUser()
+    {
+        return $this->user;
     }
 
 
