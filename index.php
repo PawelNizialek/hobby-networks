@@ -22,7 +22,7 @@ Routing::post('addHobby', 'HobbyController');
 Routing::get('add', 'DefaultController');
 Routing::get('logout', 'SecurityController');
 Routing::get('', 'HobbyController');
-Routing::get('setStar', 'StarController');
+Routing::get('setStar', 'HobbyController');
 Routing::get('save', 'HobbyController');
 Routing::get('remove', 'HobbyController');
 Routing::get('description', 'HobbyController');

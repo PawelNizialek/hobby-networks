@@ -16,6 +16,8 @@ class SecurityController extends AppController
         $login = $_POST['login'];
         $password = $_POST['password'];
 
+        $password = md5($password);
+
         $user = $userRepository->getUser($login);
 
         if(!$user){
@@ -27,7 +29,7 @@ class SecurityController extends AppController
             return $this->render('login', ["message"=>"User with this login not exists"]);
         }
 
-        if($user->getPassword() !== $password){
+        if($password !== $user->getPassword()){
             return $this->render('login', ["message"=>"Wrong password"]);
         }
         setcookie("user", "admin", time() + 86400);
@@ -55,8 +57,7 @@ class SecurityController extends AppController
             return $this->render('register', ['messages' => ['Please provide proper password']]);
         }
 
-        //TODO try to use better hash function
-        $user = new User($email, $password, $name, $firstname, $lastname,0);
+        $user = new User($email, md5($password), $name, $firstname, $lastname,0);
 
         $userRepository = new UserRepository();
         if($userRepository->addUser($user)==null){

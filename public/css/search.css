@@ -11,9 +11,6 @@ main{
     width: 20vw;
     height: 6vh;
 }
-/*input{*/
-/*    width: 20vw;*/
-/*}*/
 .search-button button{
     /*height: 2vh;*/
     padding: 0;
@@ -25,4 +22,13 @@ main{
 }
 .search-bar input{
     height: 100%;
+    margin: 1em;
+    padding: 0.5em;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.8em;
+    letter-spacing: 0px;
+    color: #505050;
+    opacity: 0.8;
+    border-color: chocolate;
+    border-radius: 0.5em;
 }

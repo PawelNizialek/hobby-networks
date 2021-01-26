@@ -43,21 +43,7 @@ class HobbyRepository extends Repository{
             $assignedById,
         ]);
     }
-//    public function getLoggedUserId(){
-//        $stmt = $this->database->connect()->prepare('
-//            SELECT * FROM public.users_details WHERE firstname = :firstname AND lastname = :lastname
-//        ');
-////        $name = $user->getName();
-////        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
-//        $firstname = $user->getFirstname();
-//        $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
-//        $lastname = $user->getLastname();
-//        $stmt->bindParam(':lastname', $lastname, PDO::PARAM_STR);
-//        $stmt->execute();
-//
-//        $data = $stmt->fetch(PDO::FETCH_ASSOC);
-//        return $data['id'];
-//    }
+
     public function getHobbies(): array
     {
         $result = [];
@@ -83,7 +69,6 @@ class HobbyRepository extends Repository{
     {
         $result = [];
         $loggedUserId = $_SESSION['user-id'];
-//        SELECT * FROM hobbies order by random () LIMIT 3
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM hobbies h JOIN users u on h.id_assigned_by=u.user_id 
             where id_assigned_by != :loggedUserId 
@@ -108,13 +93,11 @@ class HobbyRepository extends Repository{
         return $result;
     }
     public function setStar(int $id){
-//        die("dziala");
         $stmt = $this->database->connect()->prepare('
             UPDATE hobbies SET "star" = "star" + 1 WHERE id = :id
         ');
         $stmt->bindParam(":id", $id, PDO::PARAM_INT);
         $stmt->execute();
-
 
         $stmt = $this->database->connect()->prepare('
             INSERT INTO stars (id_user, id_assigned_by)
@@ -171,12 +154,6 @@ class HobbyRepository extends Repository{
         $stmt->bindParam(':id', $id, PDO::PARAM_INT);
         $stmt->bindParam(':loggedUser', $loggedUser, PDO::PARAM_STR);
         $stmt->execute();
-
-//        $savedHobby = $stmt->fetch(PDO::FETCH_ASSOC);
-
-//        if ($savedHobby == true) {
-//            return null;
-//        }
     }
     public function getSavedHobbies(){
         $loggedUser = $_SESSION["user-id"];

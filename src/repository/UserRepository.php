@@ -21,7 +21,6 @@ class UserRepository extends Repository{
         $loggedUser = $_SESSION["user-id"];
         $newRole = "premium";
         $_SESSION['user-role'] = $newRole;
-//        SELECT *  FROM public.users u JOIN users_details ud on  u.id_user_details=ud.id and u.user_id=:loggedUser
         $stmt = $this->database->connect()->prepare('
             UPDATE users_details SET role = :newRole from public.users u 
             JOIN users_details ud on u.id_user_details=ud.id where u.user_id=:loggedUser
@@ -32,9 +31,6 @@ class UserRepository extends Repository{
     }
     public function getUser(string $email): ?User
     {
-//        $stmt = $this->database->connect()->prepare('
-//            SELECT * FROM public.users WHERE name = :name
-//        ');
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM users u JOIN users_details ud on u.id_user_details=ud.id WHERE name = :name;
         ');
@@ -51,20 +47,23 @@ class UserRepository extends Repository{
             $user['email'],
             $user['password'],
             $user['name'],
-            'null',
-            'null',
+            $user['firstname'],
+            $user['lastname'],
             $user['user_id'],
             $user['role']
         );
     }
     public function addUser(User $user){
         $stmt = $this->database->connect()->prepare('
-            SELECT * FROM users u JOIN users_details ud on u.id_user_details=ud.id WHERE name = :name;
+            SELECT * FROM users u JOIN users_details ud on u.id_user_details=ud.id WHERE name = :username;
         ');
         $name = $user->getName();
-        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
+        $stmt->bindParam(':username', $name, PDO::PARAM_STR);
         $stmt->execute();
-        if ($stmt == true) {
+
+        $searchedUser = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        if ($searchedUser == true) {
             return null;
         }
 
@@ -93,14 +92,13 @@ class UserRepository extends Repository{
             $this->getUserDetailsId($user),
             true
         ]);
+        return true;
     }
     public function getUserDetailsId(User $user): int
     {
         $stmt = $this->database->connect()->prepare('
             SELECT * FROM public.users_details WHERE firstname = :firstname AND lastname = :lastname
         ');
-//        $name = $user->getName();
-//        $stmt->bindParam(':name', $name, PDO::PARAM_STR);
         $firstname = $user->getFirstname();
         $stmt->bindParam(':firstname', $firstname, PDO::PARAM_STR);
         $lastname = $user->getLastname();

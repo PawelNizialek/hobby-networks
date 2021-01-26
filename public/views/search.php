@@ -18,7 +18,6 @@
     </div>
     <div class="search-container">
         <div class="search-bar"><input name="title" type="text" placeholder="search hobby..."></div>
-        <div class="search-button"><button type="submit"><i class="fas fa-search"></i></button></div>
     </div>
     <div class="right-items">
         <ul>
