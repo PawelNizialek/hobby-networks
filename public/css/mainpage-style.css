@@ -105,6 +105,7 @@
 }
 .hobbies #hobby-description{
     margin-left: 0.5em;
+    width: 30vh;
 }
 .hobbies #save-button button{
     text-align: left;

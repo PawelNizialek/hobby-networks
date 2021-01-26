@@ -4,7 +4,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/mainpage-style.css">
     <script src="https://kit.fontawesome.com/c648cced1d.js" crossorigin="anonymous"></script>
     <script type="text/javascript" src="./public/js/saving.js" defer></script>
-    <title>MAIN PAGE</title>
+    <title>saved</title>
 </head>
 <body>
 <?php include('header.php')?>

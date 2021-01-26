@@ -12,23 +12,16 @@ class SecurityController extends AppController
             return $this->render('login');
         }
         $userRepository = new UserRepository();
-
         $login = $_POST['login'];
         $password = $_POST['password'];
-
         $password = md5($password);
-
         $user = $userRepository->getUser($login);
-
         if(!$user){
             return $this->render('login', ["message"=>"User not exists"]);
         }
-
-
         if ($user->getName() !== $login){
             return $this->render('login', ["message"=>"User with this login not exists"]);
         }
-
         if($password !== $user->getPassword()){
             return $this->render('login', ["message"=>"Wrong password"]);
         }
@@ -56,6 +49,12 @@ class SecurityController extends AppController
         if ($password !== $confirmedPassword) {
             return $this->render('register', ['messages' => ['Please provide proper password']]);
         }
+        if ($name=="" or $firstname=="" or $lastname == ""){
+            return $this->render('register', ['messages' => ['white space are not allowed']]);
+        }
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            return $this->render('register', ['messages' => ['invalid email format']]);
+        }
 
         $user = new User($email, md5($password), $name, $firstname, $lastname,0);
 
@@ -73,7 +72,7 @@ class SecurityController extends AppController
     }
     public function setRole($role){
         $userRepository = new UserRepository();
-        $userRepository->setRole($role);
+        $userRepository->setPremium($role);
         return $this->render('upgrade', ["message"=>"Congratulations you have a premium account!"]);
     }
 }

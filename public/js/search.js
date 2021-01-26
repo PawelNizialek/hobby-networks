@@ -17,12 +17,12 @@ search.addEventListener("keyup", function (event) {
             return response.json();
         }).then(function (hobbies) {
             projectContainer.innerHTML = "";
-            loadProjects(hobbies);
+            loadHobbies(hobbies);
         });
     }
 });
 
-function loadProjects(hobbies) {
+function loadHobbies(hobbies) {
     hobbies.forEach(hobby => {
         console.log(hobbies);
         createProject(hobby);

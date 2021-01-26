@@ -27,6 +27,9 @@ class HobbyController extends AppController {
 
 
     public function addHobby(){
+        if(!$this->isLogged()){
+            return $this->render('login');
+        }
         if (is_uploaded_file($_FILES['file']['tmp_name']) && $this->validate($_FILES['file'])) {
             move_uploaded_file(
                 $_FILES['file']['tmp_name'],
@@ -51,20 +54,6 @@ class HobbyController extends AppController {
         $this->hobbyRepository->setStar($id);
         http_response_code(200);
     }
-
-    private function validate(array $file): bool
-    {
-        if ($file['size'] > self::MAX_FILE_SIZE) {
-            $this->message[] = 'File is too large for destination file system.';
-            return false;
-        }
-
-        if (!isset($file['type']) || !in_array($file['type'], self::SUPPORTED_TYPES)) {
-            $this->message[] = 'File type is not supported.';
-            return false;
-        }
-        return true;
-    }
     public function save(int $id){
         $this->hobbyRepository->save($id);
         http_response_code(200);
@@ -81,6 +70,9 @@ class HobbyController extends AppController {
         $this->render('saved',['hobbies' => $hobbies]);
     }
     public function search(){
+        if(!$this->isLogged()){
+            return $this->render('login');
+        }
         $hobbies = $this->hobbyRepository->getSavedHobbies();
         $this->render('search',['hobbies' => $hobbies]);
     }
@@ -95,5 +87,18 @@ class HobbyController extends AppController {
 
             echo json_encode($this->hobbyRepository->getHobbyByTitle($decoded['search']));
         }
+    }
+    private function validate(array $file): bool
+    {
+        if ($file['size'] > self::MAX_FILE_SIZE) {
+            $this->message[] = 'File is too large for destination file system.';
+            return false;
+        }
+
+        if (!isset($file['type']) || !in_array($file['type'], self::SUPPORTED_TYPES)) {
+            $this->message[] = 'File type is not supported.';
+            return false;
+        }
+        return true;
     }
 }

@@ -7,7 +7,7 @@
     <script type="text/javascript" src="./public/js/saving.js" defer></script>
     <script type="text/javascript" src="./public/js/description.js" defer></script>
 
-    <title>MAIN PAGE</title>
+    <title>hobbies</title>
 </head>
 <body>
     <?php include('header.php') ?>

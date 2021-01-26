@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/register.css">
     <title>SIGN-IN</title>
 </head>
 <body>
@@ -16,7 +16,7 @@
                     }
                     ?>
                 </div>
-            <input name="login" type="text" placeholder="username or email">
+            <input name="login" type="text" placeholder="username">
             <input name="password" type="password" placeholder="password">
             <button type="submit">SIGN-IN</button>
         </form>

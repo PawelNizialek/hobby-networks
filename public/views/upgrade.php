@@ -3,7 +3,7 @@
     <link rel="stylesheet" type="text/css" href="public/css/navigation.css">
     <link rel="stylesheet" type="text/css" href="public/css/upgrade.css">
     <script src="https://kit.fontawesome.com/c648cced1d.js" crossorigin="anonymous"></script>
-    <title>MAIN PAGE</title>
+    <title>upgrade</title>
 </head>
 <body>
 <?php include('header.php')?>

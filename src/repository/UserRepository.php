@@ -17,15 +17,28 @@ class UserRepository extends Repository{
         $data = $stmt->fetch(PDO::FETCH_ASSOC);
         return $data['id'];
     }
-    public function setRole(){
+    public function setPremium(){
         $loggedUser = $_SESSION["user-id"];
         $newRole = "premium";
         $_SESSION['user-role'] = $newRole;
+//        $stmt = $this->database->connect()->prepare('
+//            UPDATE users_details SET role = :newRole from public.users u
+//            JOIN users_details ud on u.id_user_details=ud.id where u.user_id=:loggedUser
+//        ');
+//        $stmt->bindParam(':loggedUser', $loggedUser, PDO::PARAM_INT);
+//        $stmt->bindParam(':newRole', $newRole, PDO::PARAM_STR);
+//        $stmt->execute();
         $stmt = $this->database->connect()->prepare('
-            UPDATE users_details SET role = :newRole from public.users u 
-            JOIN users_details ud on u.id_user_details=ud.id where u.user_id=:loggedUser
+            select * from users where user_id = :loggedUser
         ');
         $stmt->bindParam(':loggedUser', $loggedUser, PDO::PARAM_INT);
+        $stmt->execute();
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        $id_details = $user['id_user_details'];
+        $stmt = $this->database->connect()->prepare('
+            UPDATE users_details SET role = :newRole where id=:loggedUser
+        ');
+        $stmt->bindParam(':loggedUser', $id_details, PDO::PARAM_INT);
         $stmt->bindParam(':newRole', $newRole, PDO::PARAM_STR);
         $stmt->execute();
     }

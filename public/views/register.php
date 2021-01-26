@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <head>
-    <link rel="stylesheet" type="text/css" href="public/css/style.css">
+    <link rel="stylesheet" type="text/css" href="public/css/register.css">
     <script type="text/javascript" src="./public/js/registration.js" defer></script>
     <title>SIGN UP</title>
 </head>
